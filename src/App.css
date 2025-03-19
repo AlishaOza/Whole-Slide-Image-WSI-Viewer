@@ -1,38 +1,82 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Side: Metadata Panel */
+.metadata-panel {
+  width: 300px; /* Fixed width for the left panel */
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ddd;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+.metadata-panel h2 {
+  margin-bottom: 20px;
+}
+
+.metadata-panel ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.metadata-panel li {
+  margin-bottom: 10px;
+}
+
+/* Center: Image Viewer */
+.image-viewer-container {
+  flex: 1; /* Takes up remaining space */
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  position: relative;
+  background-color: #fff; /* Optional: Add background color */
+  overflow: hidden; /* Prevent overflow */
+  cursor: grab;
+}
+
+.image-viewer-container img {
+  max-width: 100%;
+  max-height: 80vh; /* Limit image height to 80% of viewport height */
+  height: auto;
+}
+
+/* Buttons on top of the image */
+.controls {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.controls button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Right Side: Hub View */
+.hub-view {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 150px;
+  border: 2px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10; /* Ensure it's above the image */
+  padding: 10px;
 }
